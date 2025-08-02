@@ -1,37 +1,44 @@
 # Import the QueryBase class
-# YOUR CODE HERE
+from .query_base import QueryBase
 
 # Import dependencies for sql execution
-#### YOUR CODE HERE
+from .sql_execution import QueryMixin
 
 # Create a subclass of QueryBase
 # called  `Team`
-#### YOUR CODE HERE
+class Team(QueryBase):
+    """Class for querying team events in the employee_events database.
+    This class inherits from QueryBase and provides methods specific to team data.
+    """
 
     # Set the class attribute `name`
     # to the string "team"
-    #### YOUR CODE HERE
+    name = "team"
 
 
     # Define a `names` method
     # that receives no arguments
     # This method should return
     # a list of tuples from an sql execution
-    #### YOUR CODE HERE
+    def names(self):
         
         # Query 5
         # Write an SQL query that selects
         # the team_name and team_id columns
         # from the team table for all teams
         # in the database
-        #### YOUR CODE HERE
+        query = """
+            SELECT team_name, team_id
+            FROM team
+        """
+        return self.query(query)
     
 
     # Define a `username` method
     # that receives an ID argument
     # This method should return
     # a list of tuples from an sql execution
-    #### YOUR CODE HERE
+    def username(self, id):
 
         # Query 6
         # Write an SQL query
