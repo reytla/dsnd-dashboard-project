@@ -46,7 +46,12 @@ class Team(QueryBase):
         # Use f-string formatting and a WHERE filter
         # to only return the team name related to
         # the ID argument
-        #### YOUR CODE HERE
+        query = f"""
+            SELECT team_name
+            FROM team
+            WHERE team_id = {id}
+        """
+        return self.query(query)
 
 
     # Below is method with an SQL query
@@ -59,7 +64,7 @@ class Team(QueryBase):
     #### YOUR CODE HERE
     def model_data(self, id):
 
-        return f"""
+        query = f"""
             SELECT positive_events, negative_events FROM (
                     SELECT employee_id
                          , SUM(positive_events) positive_events
@@ -71,3 +76,4 @@ class Team(QueryBase):
                     GROUP BY employee_id
                    )
                 """
+        return self.pandas_query(query)

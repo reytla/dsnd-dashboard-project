@@ -30,6 +30,15 @@ class QueryBase(QueryMixin):
     # that receives an `id` argument
     # This method should return a pandas dataframe
     def event_counts(self, id):
+        """
+        Retrieves event counts (positive and negative) for a given ID.
+
+        Args:
+            id (int): The ID of the employee or team.
+
+        Returns:
+            pd.DataFrame: A DataFrame containing event counts grouped by event_date.
+        """
         # Use correct id column based on class attribute
         id_col = "employee_id" if self.name == "employee" else "team_id"
         query = f"""
