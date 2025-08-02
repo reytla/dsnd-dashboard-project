@@ -2,6 +2,7 @@
 from sqlite3 import connect
 from pathlib import Path
 from .sql_execution import QueryMixin
+import pandas as pd
 
 
 # Define a class called QueryBase
@@ -38,9 +39,7 @@ class QueryBase(QueryMixin):
         # Use f-string formatting to set the name
         # of id columns used for joining
         # order by the event_date column
-
-        # Import pandas to handle dataframes
-        import pandas as pd
+        
         # Connect to the database using the QueryMixin's connect method
         conn = self.connect()
         # Create a cursor to execute SQL queries
@@ -72,7 +71,7 @@ class QueryBase(QueryMixin):
     # Define a `notes` method that receives an id argument
     # This function should return a pandas dataframe
     # YOUR CODE HERE
-
+    def notes(self, id):
         # QUERY 2
         # Write an SQL query that returns `note_date`, and `note`
         # from the `notes` table
@@ -82,3 +81,27 @@ class QueryBase(QueryMixin):
         # for the table name in the `name` class attribute
         # YOUR CODE HERE
 
+        # Connect to the database using the QueryMixin's connect method
+        conn = self.connect()
+        # Create a cursor to execute SQL queries
+        cursor = conn.cursor()
+
+        # Define the SQL query to retrieve notes
+        query = f"""
+        SELECT note_date, note
+        FROM notes
+        WHERE id = ?
+        AND table_name = '{self.name}';
+        """
+        
+        # Execute the query with the provided id    
+        cursor.execute(query, (id,))
+        # Fetch all results from the executed query
+        results = cursor.fetchall()
+        # Create a pandas DataFrame from the results
+        df = pd.DataFrame(results, columns=['note_date', 'note'])
+        # Close the cursor and connection
+        cursor.close()
+        conn.close()
+        # Return the DataFrame containing notes
+        return df
