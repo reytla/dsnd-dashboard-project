@@ -270,6 +270,8 @@ def index():
     # pass the integer 1 and an instance
     # of the Employee class as arguments
     # Return the result
+    #print("Index route called")
+    #return H1("Dashboard Test Render")
     return report(1, Employee())
 
 # Create a route for a get request
@@ -326,5 +328,5 @@ async def update_data(r):
         return RedirectResponse(f"/team/{id}", status_code=303)
     
 
-
+#print("Server is running") # Check if the server is running
 serve()
