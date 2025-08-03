@@ -6,19 +6,20 @@ from pathlib import Path
 # for the root of this project
 project_root = Path(__file__).resolve().parent.parent
 
+
 # apply the pytest fixture decorator
 # to a `db_path` function
 @pytest.fixture
 def db_path():
-    """ Fixture that provides the path to the employee_events database. """ 
+    """ Fixture that provides the path to the employee_events database. """
     # Using the `project_root` variable
     # return a pathlib object for the `employee_events.db` file
     return (
-        project_root 
-        / 'python-package' 
-        / 'employee_events' 
+        project_root
+        / 'python-package'
+        / 'employee_events'
         / 'employee_events.db'
-    )   
+    )
 
 
 # Define a function called
@@ -32,7 +33,6 @@ def test_db_exists(db_path):
     # Assert that the `db_path` variable
     # is a pathlib object
     assert isinstance(db_path, Path)
-    
     # using the pathlib `.is_file` method
     # assert that the sqlite database file exists
     # at the location passed to the test_db_exists function
