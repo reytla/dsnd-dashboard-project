@@ -65,7 +65,11 @@ class Header(BaseComponent):
         # Using the model argument for this method
         # return a fasthtml H1 objects
         # containing the model's name attribute
-        return H1(model.name)
+        if model.name == 'employee':
+            return H1("Employee Performance")
+        else:
+            return H1("Team Performance")
+        #return H1(model.name)
           
 
 # Create a subclass of base_components/MatplotlibViz
@@ -175,8 +179,11 @@ class BarChart(MatplotlibViz):
         # Initialize a matplotlib subplot
         fig, ax = plt.subplots()
         
+        # Add a color scale: green for low risk, red for high risk
+        color = plt.cm.RdYlGn_r(pred)
+
         # Run the following code unchanged
-        ax.barh([''], [pred])
+        ax.barh([''], [pred], color=color)
         ax.set_xlim(0, 1)
         ax.set_title('Predicted Recruitment Risk', fontsize=20)
         

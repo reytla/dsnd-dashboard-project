@@ -13,7 +13,7 @@ def db_path():
     """ Fixture that provides the path to the employee_events database. """   
     # Using the `project_root` variable
     # return a pathlib object for the `employee_events.db` file
-    return project_root / 'data' / 'employee_events.db'
+    return project_root / 'python-package' / 'employee_events' / 'employee_events.db'
 
 # Define a function called
 # `test_db_exists`
