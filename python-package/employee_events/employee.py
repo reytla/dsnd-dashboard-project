@@ -7,6 +7,8 @@ from .sql_execution import QueryMixin
 
 # Define a subclass of QueryBase
 # called Employee
+
+
 class Employee(QueryBase):
     """Class for querying employee events in the employee_events database.
     This class inherits from QueryBase and provides methods specific to employee data.
@@ -16,16 +18,16 @@ class Employee(QueryBase):
     # to the string "employee"
     name = "employee"
 
-
     # Define a method called `names`
     # that receives no arguments
     # This method should return a list of tuples
     # from an sql execution
+
     def names(self):
-        
+
         # Query 3
         # Write an SQL query
-        # that selects two columns 
+        # that selects two columns
         # 1. The employee's full name
         # 2. The employee's id
         # This query should return the data
@@ -35,14 +37,14 @@ class Employee(QueryBase):
             FROM employee
         """
         return self.query(query)
-    
 
     # Define a method called `username`
     # that receives an `id` argument
     # This method should return a list of tuples
     # from an sql execution
+
     def username(self, id):
-        
+
         # Query 4
         # Write an SQL query
         # that selects an employees full name
@@ -56,7 +58,6 @@ class Employee(QueryBase):
         """
         return self.query(query)
 
-
     # Below is method with an SQL query
     # This SQL query generates the data needed for
     # the machine learning model.
@@ -64,7 +65,8 @@ class Employee(QueryBase):
     # so when it is called, a pandas dataframe
     # is returns containing the execution of
     # the sql query
-    #### YOUR CODE HERE
+    # YOUR CODE HERE
+
     def model_data(self, id):
 
         query = f"""
@@ -76,4 +78,3 @@ class Employee(QueryBase):
                     WHERE {self.name}.{self.name}_id = {id}
                 """
         return self.pandas_query(query)
-        

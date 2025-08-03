@@ -49,7 +49,7 @@ def db_conn(db_path):
 def table_names(db_conn):
     name_tuples = db_conn.execute(
         "SELECT name FROM sqlite_master WHERE type='table';"
-        ).fetchall()
+    ).fetchall()
     return [x[0] for x in name_tuples]
 
 

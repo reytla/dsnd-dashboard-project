@@ -16,19 +16,19 @@ class QueryBase(QueryMixin):
 
     # Create a class attribute called `name`
     # set the attribute to an empty string
-    name = "" # e.g. "employee_events"
+    name = ""  # e.g. "employee_events"
 
     # Define a `names` method that receives
     # no passed arguments
     def names(self):
-        
+
         # Return an empty list
         return []
-
 
     # Define an `event_counts` method
     # that receives an `id` argument
     # This method should return a pandas dataframe
+
     def event_counts(self, id):
         """
         Retrieves event counts (positive and negative) for a given ID.
@@ -51,7 +51,7 @@ class QueryBase(QueryMixin):
         ORDER BY event_date;
         """
         return self.pandas_query(query)
-            
+
     # Define a `notes` method that receives an id argument
     # This function should return a pandas dataframe
     # YOUR CODE HERE
