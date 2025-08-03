@@ -62,8 +62,7 @@ def test_employee_table_exists(table_names):
 
     # Assert that the string 'employee'
     # is in the table_names list
-    assert (
-        'employee' in table_names, 
+    assert 'employee' in table_names, (
         "The 'employee' table does not exist in the database."
     )
 
@@ -77,8 +76,7 @@ def test_team_table_exists(table_names):
 
     # Assert that the string 'team'
     # is in the table_names list
-    assert (
-        'team' in table_names, 
+    assert 'team' in table_names, (
         "The 'team' table does not exist in the database."
     )
 
@@ -92,7 +90,6 @@ def test_employee_events_table_exists(table_names):
 
     # Assert that the string 'employee_events'
     # is in the table_names list
-    assert (
-        'employee_events' in table_names, 
+    assert 'employee_events' in table_names, (
         "The 'employee_events' table does not exist in the database."
     )
